@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Driving Movie{% endblock %}
+
+{% block content %}
+<!-- [FC2 Analyzer] //analyzer.fc2.com/  -->
+<script language="javascript" src="//analyzer54.fc2.com/ana/processor.php?uid=2897827" type="text/javascript"></script>
+<noscript>
+    <div align="right"><img src="//analyzer54.fc2.com/ana/icon.php?uid=2897827&ref=&href=&wid=0&hei=0&col=0" /></div>
+</noscript>
+<!-- [FC2 Analyzer]  -->
+
+
+
+<div class="container">
+    <h1>Driving Movie</h1>
+    <form method="POST" action="/driving_movie" enctype="multipart/form-data">
+        <label class="form-label">動画ファイル選択</label>
+        <input type="file" class="form-control-lg" name="video" multiple>
+
+        <label class="form-label">音楽ファイル選択</label>
+        <input type="file" class="form-control-lg" name="music" multiple>
+
+        <label class="form-label">YouTubeから音楽選択</label>
+        <input type="url" class="form-control" name="youtube">
+
+        <input type="submit" class="btn btn-primary">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <!-- <ul class="flashes"> -->
+    <ul class="list-group list-group-flush">
+        {% for message in messages %}
+        <li class="list-group-item">{{ message }}</li>
+        <!-- <li>{{ message }}</li> -->
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<div class="container">
+    説明：ドライブ動画と音楽を選択すると、自動でシーンを抽出し、音楽を合わせたドライブ映像を作成できます。音楽はYouTubeから取り込むこと
+    も可能です。
+    使い方：初めに動画ファイル（mp4またはmpg）を選択してください。次に音楽ファイル（mp3）を選択してください。またはYouTubeのURLを入力すると
+    そこから音楽を取り込みます。送信を押すと動画が自動作成されます。自動作成後「download」ボタンを押すと作成した動画をダウンロードできます。
+</div>
+{% endblock %}
