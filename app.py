@@ -120,15 +120,15 @@ def index():
         gc.collect()
         shutil.rmtree(tmpdir)
 
-        return redirect("/driving_finished")
+        return redirect("/finished")
 
     else:
         return render_template("index.html")
 
 
 # 作成したビデオファイルのダウンロード
-@app.route("/driving_finished", methods=["GET", "POST"])
-def driving_finished():
+@app.route("/finished", methods=["GET", "POST"])
+def finished():
     if request.method == "POST":
         name = session["new_video_name"]
         return send_file(
@@ -137,7 +137,7 @@ def driving_finished():
             mimetype="video/mp4",
         )
     else:
-        return render_template("driving_finished.html")
+        return render_template("finished.html")
 
 
 # 安全なファイル名に変更
