@@ -1,19 +1,17 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}FIRE Visualizer{% endblock %}
+{% block metas %}
+{{super()}}
+<meta name="description" content="ドライブ映像と音楽からAIにより自動でドライブ映像のハイライド動画を作成できます。">
+<meta name="keywords" content="ドライブ,動画,音楽,動画作成,自動編集,ハイライト,YouTube,AI,画像認識,Webアプリ">
+{% endblock %}
+{% block title %}Driving Movie{% endblock %}
 
 {% block content %}
-<!-- <div class="container">
-    {% for post in posts %}
-    <article>
-        <h2>{{post.brand1_case1}}</h2>
-
-    </article>
-    {% endfor %}
-</div> -->
-
 <!-- [FC2 Analyzer] //analyzer.fc2.com/  -->
 <script language="javascript" src="//analyzer54.fc2.com/ana/processor.php?uid=2897827" type="text/javascript"></script>
-<noscript><div align="right"><img src="//analyzer54.fc2.com/ana/icon.php?uid=2897827&ref=&href=&wid=0&hei=0&col=0" /></div></noscript>
+<noscript>
+    <div align="right"><img src="//analyzer54.fc2.com/ana/icon.php?uid=2897827&ref=&href=&wid=0&hei=0&col=0" /></div>
+</noscript>
 <!-- [FC2 Analyzer]  -->
 
 <div class="container">
@@ -23,7 +21,7 @@
         <input type="file" class="form-control-lg" name="video" multiple>
 
         <label class="form-label">音楽ファイル選択</label>
-        <input type="file" class="form-control-lg" name="music" multiple>
+        <input type="file" class="form-control-lg" name="audio" multiple>
 
         <label class="form-label">YouTubeから音楽選択</label>
         <input type="url" class="form-control" name="youtube">
@@ -45,9 +43,35 @@
 </div>
 
 <div class="container">
-    説明：ドライブ動画と音楽を選択すると、自動でシーンを抽出し、音楽を合わせたドライブ映像を作成できます。音楽はYouTubeから取り込むこと
-    も可能です。
-    使い方：初めに動画ファイル（mp4またはmpg）を選択してください。次に音楽ファイル（mp3）を選択してください。またはYouTubeのURLを入力すると
-    そこから音楽を取り込みます。送信を押すと動画が自動作成されます。自動作成後「download」ボタンを押すと作成した動画をダウンロードできます。;;;
+    <h1>使い方</h1>
+    <ol class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">STEP 1</div>
+                <p>ドライブ動画のファイルを選択します</p>
+                <p>
+                    <font color="gray">ファイル形式をmp4またはmpgとしてください</font>
+                </p>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">STEP 2</div>
+                </p>音楽ファイルを選択します</p>
+                <p>
+                    <font color="gray">ファイル形式をmp3としてください。YouTubeのURLを入力するとYouTubeから音楽を取り込みます</font>
+                </p>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">STEP 3</div>
+                </p>送信ボタンを押します</p>
+                <p>
+                    <font color="gray">自動でドライブシーンを抽出して音楽にあわせた動画を作成します</font>
+                </p>
+            </div>
+        </li>
+    </ol>
 </div>
 {% endblock %}
