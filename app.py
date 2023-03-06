@@ -9,7 +9,9 @@ import numpy as np
 from flask import Flask, flash, redirect, render_template, request, send_file, session
 from flask_bootstrap import Bootstrap
 from keras.applications.vgg16 import VGG16, preprocess_input
-from keras.preprocessing.image import img_to_array, load_img  # tensorflow最新バージョンでは修正要
+from keras.preprocessing.image import img_to_array, load_img
+
+# from tensorflow.keras.utils import img_to_array, load_img（tensorflow最新バージョンの場合）
 from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from moviepy.video.fx.all import fadein, fadeout
 from moviepy.video.fx.speedx import speedx
