@@ -9,7 +9,7 @@ import numpy as np
 from flask import Flask, flash, redirect, render_template, request, send_file, session
 from flask_bootstrap import Bootstrap
 from keras.applications.vgg16 import VGG16, preprocess_input
-from keras.preprocessing.image import img_to_array, load_img
+from keras.preprocessing.image import img_to_array, load_img  # tensorflow最新バージョンでは修正要
 from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from moviepy.video.fx.all import fadein, fadeout
 from moviepy.video.fx.speedx import speedx
@@ -94,7 +94,6 @@ def index():
             clip = mp.VideoFileClip(video)
             # ビデオファイルからSAMPLING_SECで画像切り出し
             frame(video, app.config["SAMPLING_SEC"], IMAGE_DIR)
-            # frame(clip,app.config["SAMPLING_SEC",IMAGE_DIR)    #cv2を使わない場合
             # 切り出した画像の特徴抽出
             X = feature(IMAGE_DIR)
             # 抽出した特徴から画像を分類しビデオからシーンを抽出
@@ -172,20 +171,6 @@ def frame(file, sec, directory):
 
     return
 
-
-# フレームのサンプリング（cv2の方が高速）
-# def frame(clip,sec,directory):
-#     if os.path.exists(directory):
-#         shutil.rmtree(directory)
-#     if not os.path.exists(directory):
-#         os.makedirs(directory)
-
-#     i = 0
-#     while i*sec<clip.duration:
-#         clip.save_frame(directory+'img_%s.png' % str(i).zfill(6), i*sec)
-#         i=i+1
-
-#     return
 
 # 画像の特徴抽出
 # directory:画像の保存先パス, X:抽出した特徴(kerasの形式のリスト)
